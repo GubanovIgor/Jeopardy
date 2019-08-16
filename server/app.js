@@ -13,7 +13,7 @@ const corsMiddleware = (req, res, next) => {
 	next();
 }
 
-app.use(corsMiddleware)
+app.use(corsMiddleware);
 
 app.get('/user', async function (req, res) {
   // let user = new User({login: "t", password: "123"})
