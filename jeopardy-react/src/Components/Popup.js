@@ -7,7 +7,12 @@ class Popup extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      inputValue: '',
     }
+  }
+
+  onChange = (e) => {
+    this.setState({inputValue: e.target.value})
   }
 
   render() {
@@ -17,7 +22,7 @@ class Popup extends React.Component {
         <div className={styles.innerPopUp}>
           <h3>Введите свой ответ</h3>
           <div className={styles.inputGroup}>
-            <input type="text" aria-describedby="basic-addon1"></input>
+            <input type="text" onChange={this.onChange} value={this.state.inputValue}></input>
             <button onClick={() => this.props.hidden(true)}>OK</button>
           </div>
         </div>

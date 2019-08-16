@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addCardsAC } from '../redux/actions'
+import { addCardsAC, toggleHiddenAC } from '../redux/actions'
 import Popup from './Popup'
 
 import './App.css';
@@ -26,7 +26,7 @@ class App extends React.Component {
     return (
       <div className="App">
         {(this.props.cards[0]) ? <p>{this.props.cards[0].questions[3].q}</p> : <p>Loading...</p>}
-        {(!this.props.popupCheck) ? <Popup /> : <p>нет popup</p>}
+        {(!this.props.popupCheck) ? <Popup /> : <button onClick={() => this.props.hidden(false)}>показать Popup</button>}
       </div>
     );
   }
@@ -34,7 +34,8 @@ class App extends React.Component {
 
 function mapDispatchToProps(dispatch) {
   return {
-    addCards: (data) => dispatch(addCardsAC(data))
+    addCards: (data) => dispatch(addCardsAC(data)),
+    hidden: (status) => dispatch(toggleHiddenAC(status))
   }
 }
 
