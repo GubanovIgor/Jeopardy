@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { addCardsAC } from '../redux/actions';
-import Category from './Category';
+import Category from './Items';
 
 import './App.css';
 import Categories from './Categories';
@@ -34,7 +34,7 @@ class App extends React.Component {
        
 
         {(this.state.loading) ? <p>{this.props.cards[0].questions[3].q}</p> : <p>Loading...</p>}
-        <Category />
+        
 
       </div>
       </Router>

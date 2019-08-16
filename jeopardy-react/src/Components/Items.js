@@ -3,7 +3,7 @@ import Item from './Item';
 import { connect } from 'react-redux';
 import { Link } from "react-router-dom";
 
-class Category extends Component {
+class Items extends Component {
   render() {
     return (
       <div className={'category'}>
@@ -23,4 +23,4 @@ function mapStateToProps(store) {
 }
 
 
-export default connect(mapStateToProps)(Category);
+export default connect(mapStateToProps)(Items);
