@@ -37,4 +37,4 @@ async function mainFunction() {
   await card1.save();
 }
 
-mainFunction();
+// mainFunction();
