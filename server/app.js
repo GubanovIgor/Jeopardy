@@ -15,13 +15,8 @@ const corsMiddleware = (req, res, next) => {
 
 app.use(corsMiddleware)
 
-app.get('/user', async function (req, res) {
-  // let user = new User({login: "t", password: "123"})
-  // await user.save();
-  // let user1 = new User({login: "y", password: "123"})
-  // await user1.save();
-  let users = await User.find();
-  res.json({users : users})
+app.get('/', async function (req, res) {
+  res.send('Hello')
 });
 
 
