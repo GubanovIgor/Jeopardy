@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { addCardsAC } from '../redux/actions'
+import Popup from './Popup'
 
 import './App.css';
 
@@ -9,7 +10,7 @@ class App extends React.Component {
     super(props);
     this.state = {
       // cards: [],
-      loading: false,
+      // loading: false,
     }
   }
 
@@ -17,14 +18,15 @@ class App extends React.Component {
     const resp = await fetch('http://localhost:3101/getCards');
     const data = await resp.json();
     this.props.addCards(data);
-    console.log(this.props)
+    console.log(this.props.cards)
     this.setState({ loading: true });
   }
 
   render() {
     return (
       <div className="App">
-        {(this.state.loading) ? <p>{this.props.cards[0].questions[4].q}</p> : <p>Loading...</p>}
+        {(this.props.cards[0]) ? <p>{this.props.cards[0].questions[3].q}</p> : <p>Loading...</p>}
+        {(!this.props.popupCheck) ? <Popup /> : <p>нет popup</p>}
       </div>
     );
   }
@@ -38,7 +40,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(store) {
   return {
-    cards: store.cards
+    cards: store.cards,
+    popupCheck: store.popupCheck,
   }
 }
 
