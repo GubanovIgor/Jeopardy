@@ -3,6 +3,7 @@ import { connect } from 'react-redux';
 import { addCardsAC } from '../redux/actions'
 
 import './App.css';
+import Categories from './Categories';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,14 +18,15 @@ class App extends React.Component {
     const resp = await fetch('http://localhost:3101/getCards');
     const data = await resp.json();
     this.props.addCards(data);
-    console.log(this.props)
+    console.log(data)
     this.setState({ loading: true });
   }
 
   render() {
     return (
       <div className="App">
-        {(this.state.loading) ? <p>{this.props.cards[0].questions[4].q}</p> : <p>Loading...</p>}
+        <Categories />
+       
       </div>
     );
   }
