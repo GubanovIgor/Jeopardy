@@ -1,6 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addCardsAC } from '../redux/actions'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { addCardsAC } from '../redux/actions';
+import Category from './Category';
 
 import './App.css';
 import Categories from './Categories';
@@ -18,16 +20,24 @@ class App extends React.Component {
     const resp = await fetch('http://localhost:3101/getCards');
     const data = await resp.json();
     this.props.addCards(data);
-    console.log(data)
+
     this.setState({ loading: true });
   }
 
   render() {
+    
     return (
+      <Router>
       <div className="App">
+
         <Categories />
        
+
+        {(this.state.loading) ? <p>{this.props.cards[0].questions[3].q}</p> : <p>Loading...</p>}
+        <Category />
+
       </div>
+      </Router>
     );
   }
 }
